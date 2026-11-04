@@ -1,0 +1,1336 @@
+@import "./variables.css";
+
+.pdp-root *,
+.pdp-root *::before,
+.pdp-root *::after {
+  box-sizing: border-box;
+}
+
+.pdp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--pdp-z, 1100);
+  background: var(--pdp-overlay, rgba(15, 23, 42, 0.45));
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  display: flex;
+  overflow-y: auto;
+  animation: pdp-fade-in 0.2s ease;
+}
+
+.pdp-overlay--center {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.pdp-overlay--sheet {
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pdp-overlay--popover {
+  display: block;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.pdp-panel {
+  background: var(--pdp-bg-elevated);
+  color: var(--pdp-text);
+  border-radius: 26px;
+  box-shadow: var(--pdp-shadow);
+  overflow: hidden;
+  width: min(410px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  animation: pdp-scale-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+  margin: auto;
+  flex-shrink: 0;
+}
+
+.pdp-panel--popover {
+  position: absolute;
+  width: 380px;
+  animation: pdp-fade-in 0.16s ease;
+}
+
+.pdp-panel--wide {
+  width: min(600px, calc(100vw - 32px));
+}
+
+.pdp-panel--xwide {
+  width: min(880px, calc(100vw - 32px));
+}
+
+.pdp-header {
+  background: var(--pdp-header-bg, var(--pdp-primary, #1677ff));
+  background:
+    radial-gradient(130% 170% at 6% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 46%),
+    linear-gradient(135deg, var(--pdp-header-bg, var(--pdp-primary, #1677ff)) 0%, var(--pdp-header-bg, var(--pdp-primary, #1677ff)) 60%, rgba(0, 30, 120, 0.35) 135%);
+  color: var(--pdp-header-text);
+  padding: 22px 22px 20px;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pdp-header-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.pdp-header-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.pdp-cal-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.pdp-cal-toggle-btn {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.pdp-cal-toggle-btn--active {
+  background: #fff;
+  color: var(--pdp-primary);
+}
+
+.pdp-header-kicker {
+  font-size: 12px;
+  opacity: 0.85;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.pdp-header-title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdp-header-sub {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 2px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px 10px;
+  gap: 8px;
+}
+
+.pdp-nav-group {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pdp-nav-btn {
+  min-width: 46px;
+  height: 46px;
+  padding: 0 8px;
+  border: 0;
+  background: var(--pdp-bg-muted);
+  color: var(--pdp-primary);
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pdp-nav-btn svg + svg {
+  margin-inline-start: -12px;
+}
+
+.pdp-nav-btn:hover {
+  background: var(--pdp-primary-soft);
+}
+
+.pdp-nav-btn:focus-visible {
+  outline: 2px solid var(--pdp-primary);
+  outline-offset: 2px;
+}
+
+.pdp-nav-label {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pdp-nav-pill {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  border: 1.5px solid var(--pdp-border);
+  background: var(--pdp-bg-elevated);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: border-color 0.15s ease;
+}
+
+.pdp-nav-pill:hover {
+  border-color: var(--pdp-primary);
+  color: var(--pdp-primary);
+}
+
+.pdp-nav-pill--static {
+  cursor: default;
+}
+
+.pdp-nav-pill--static:hover {
+  border-color: var(--pdp-border);
+  color: inherit;
+}
+
+.pdp-nav-chev {
+  color: var(--pdp-text-secondary);
+  flex-shrink: 0;
+}
+
+.pdp-nav-pill:hover .pdp-nav-chev {
+  color: var(--pdp-primary);
+}
+
+.pdp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  padding: 6px;
+  margin: 2px 14px 0;
+  background: var(--pdp-bg-muted);
+  border-radius: 15px;
+}
+
+.pdp-weekdays.pdp-weekdays--weeks {
+  grid-template-columns: 28px repeat(7, minmax(0, 1fr));
+}
+
+.pdp-weekday {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pdp-text-secondary);
+}
+
+.pdp-weekday--weekend {
+  color: var(--pdp-danger);
+}
+
+.pdp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  padding: 6px 14px 10px;
+  row-gap: 2px;
+  animation: pdp-fade-in 0.18s ease;
+}
+
+.pdp-grid.pdp-grid--weeks {
+  grid-template-columns: 28px repeat(7, minmax(0, 1fr));
+}
+
+.pdp-day--empty {
+  cursor: default;
+  background: transparent;
+}
+
+.pdp-month-cols {
+  display: contents;
+}
+
+.pdp-month-cols--multi {
+  display: flex;
+  gap: 12px;
+}
+
+.pdp-month-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdp-month-caption {
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 2px 0 6px;
+  color: var(--pdp-text);
+  white-space: nowrap;
+}
+
+/* Invisible caption that keeps the first month aligned with the captioned
+   side-by-side months (the header bar already labels the first month). */
+.pdp-month-caption--empty {
+  visibility: hidden;
+}
+
+.pdp-weeknum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--pdp-text-disabled);
+}
+
+.pdp-day {
+  height: var(--pdp-day-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: var(--pdp-text);
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.pdp-day-inner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.pdp-day:hover .pdp-day-inner {
+  background: var(--pdp-bg-muted);
+}
+
+.pdp-day--today .pdp-day-inner {
+  color: var(--pdp-primary);
+  font-weight: 800;
+}
+
+.pdp-day--today:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end) .pdp-day-inner {
+  box-shadow: inset 0 0 0 1.5px var(--pdp-primary);
+}
+
+.pdp-day--selected .pdp-day-inner,
+.pdp-day--range-start .pdp-day-inner,
+.pdp-day--range-end .pdp-day-inner {
+  background: var(--pdp-primary);
+  color: #fff;
+  box-shadow: 0 0 0 5px var(--pdp-primary-soft);
+  font-weight: 700;
+}
+
+.pdp-day--range-middle {
+  background: var(--pdp-primary-soft);
+}
+
+.pdp-day--range-middle .pdp-day-inner {
+  border-radius: 0;
+  background: transparent;
+  color: var(--pdp-primary);
+  font-weight: 600;
+}
+
+.pdp-day--range-start,
+.pdp-day--range-end {
+  background: var(--pdp-primary-soft);
+}
+
+.pdp-root[dir="rtl"] .pdp-day--range-start {
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.pdp-root[dir="rtl"] .pdp-day--range-end {
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+
+.pdp-root[dir="ltr"] .pdp-day--range-start {
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+
+.pdp-root[dir="ltr"] .pdp-day--range-end {
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.pdp-day--hover-range {
+  background: var(--pdp-primary-softer);
+}
+
+.pdp-day--outside {
+  opacity: 0.38;
+}
+
+.pdp-day--disabled {
+  cursor: not-allowed;
+  opacity: 0.32;
+}
+
+.pdp-day--disabled:hover .pdp-day-inner {
+  background: transparent;
+}
+
+.pdp-day--weekend:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end) .pdp-day-inner {
+  color: var(--pdp-danger);
+}
+
+.pdp-day--holiday:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end):not(
+    .pdp-day--range-middle
+  )
+  .pdp-day-inner {
+  background: rgba(255, 77, 79, 0.1);
+  color: var(--pdp-danger);
+}
+
+.pdp-day--focused .pdp-day-inner {
+  outline: 2px solid var(--pdp-primary);
+  outline-offset: 1px;
+}
+
+.pdp-holiday-dot {
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pdp-danger);
+}
+
+.pdp-day--selected .pdp-holiday-dot,
+.pdp-day--range-start .pdp-holiday-dot,
+.pdp-day--range-end .pdp-holiday-dot {
+  background: #fff;
+}
+
+.pdp-month-grid,
+.pdp-year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px 16px 16px;
+  animation: pdp-fade-in 0.18s ease;
+}
+
+.pdp-chip {
+  height: 44px;
+  min-height: 44px;
+  border: 0;
+  background: var(--pdp-bg-muted);
+  color: var(--pdp-text);
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.pdp-chip:hover {
+  background: var(--pdp-bg-hover);
+  color: var(--pdp-primary);
+}
+
+.pdp-chip--active {
+  background: var(--pdp-primary);
+  color: #fff;
+}
+
+.pdp-year-list {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 8px 16px 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  overscroll-behavior: contain;
+}
+
+.pdp-time-wrap {
+  margin: 4px 16px 8px;
+  background: var(--pdp-bg-muted);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pdp-time {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  justify-content: stretch;
+  position: relative;
+}
+
+.pdp-time-col {
+  flex: 1;
+  min-width: 0;
+  height: 132px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  background: transparent;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent);
+}
+
+.pdp-time-col::-webkit-scrollbar {
+  display: none;
+}
+
+.pdp-time-pad {
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.pdp-time-item {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--pdp-text-secondary);
+}
+
+.pdp-time-item--active {
+  color: var(--pdp-primary);
+  font-size: 20px;
+}
+
+.pdp-time-labels {
+  display: flex;
+  gap: 0;
+  justify-content: stretch;
+  padding: 8px 0 0;
+  font-size: 12px;
+  color: var(--pdp-text-secondary);
+  font-weight: 600;
+}
+
+.pdp-time-labels span {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.pdp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--pdp-border);
+  background: var(--pdp-bg-elevated);
+}
+
+.pdp-footer-left,
+.pdp-footer-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pdp-btn {
+  border: 0;
+  background: transparent;
+  color: var(--pdp-primary);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pdp-btn:hover {
+  background: var(--pdp-primary-soft);
+}
+
+.pdp-btn--ghost {
+  color: var(--pdp-text-secondary);
+  font-weight: 600;
+}
+
+.pdp-btn--ghost:hover {
+  background: var(--pdp-bg-muted);
+}
+
+.pdp-btn--primary {
+  background: var(--pdp-primary);
+  color: #fff;
+  padding: 0 30px;
+  box-shadow: 0 8px 20px var(--pdp-primary-glow, rgba(22, 119, 255, 0.28));
+}
+
+.pdp-btn--primary:hover {
+  background: var(--pdp-primary-hover);
+}
+
+.pdp-btn--primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pdp-switch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 8px;
+}
+
+.pdp-tabs {
+  display: flex;
+  margin: 8px 16px 0;
+  background: var(--pdp-bg-muted);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.pdp-tab {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  min-height: 36px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--pdp-text-secondary);
+  cursor: pointer;
+}
+
+.pdp-tab--active {
+  background: var(--pdp-bg-elevated);
+  color: var(--pdp-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.pdp-sheet {
+  width: 100%;
+  max-width: 560px;
+  background: var(--pdp-bg-elevated);
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--pdp-shadow);
+  display: flex;
+  flex-direction: column;
+  max-height: 92vh;
+  height: auto;
+  animation: pdp-sheet-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  touch-action: none;
+}
+
+.pdp-sheet--fullscreen {
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 0;
+}
+
+.pdp-handle {
+  width: 44px;
+  height: 5px;
+  border-radius: 99px;
+  background: #c9cdd4;
+  margin: 10px auto 4px;
+  flex-shrink: 0;
+}
+
+.pdp-sheet-title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 4px 16px 8px;
+}
+
+.pdp-wheels {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px 12px;
+  flex: none;
+  position: relative;
+}
+
+.pdp-wheel-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pdp-wheel-label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pdp-text-secondary);
+  margin-bottom: 6px;
+}
+
+.pdp-wheel {
+  position: relative;
+  height: 220px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  background: var(--pdp-bg-muted);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  overscroll-behavior: contain;
+}
+
+.pdp-wheel-highlight {
+  pointer-events: none;
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 88px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--pdp-primary-soft);
+  z-index: 0;
+}
+
+.pdp-wheel-item {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pdp-text-secondary);
+  position: relative;
+  z-index: 1;
+}
+
+.pdp-wheel-item--active {
+  color: var(--pdp-text);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.pdp-presets {
+  width: 132px;
+  border-inline-end: 1px solid var(--pdp-border);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--pdp-bg-muted);
+}
+
+.pdp-preset {
+  border: 0;
+  background: transparent;
+  text-align: start;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pdp-text-secondary);
+  cursor: pointer;
+}
+
+.pdp-preset:hover {
+  background: var(--pdp-bg-elevated);
+  color: var(--pdp-primary);
+}
+
+.pdp-body-row {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+.pdp-body-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdp-range-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 16px 8px;
+  font-size: 12px;
+  color: var(--pdp-text-secondary);
+}
+
+.pdp-range-caption strong {
+  color: var(--pdp-text);
+  font-weight: 700;
+}
+
+.pdp-multi-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 8px;
+}
+
+.pdp-mini-chip {
+  background: var(--pdp-primary-soft);
+  color: var(--pdp-primary);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pdp-input-wrap {
+  position: relative;
+  width: 100%;
+  font-family: var(--pdp-font, "Vazirmatn", Tahoma, system-ui, sans-serif);
+}
+
+.pdp-input-wrap .ant-input-affix-wrapper,
+.pdp-input-wrap .ant-input-affix-wrapper input,
+.pdp-input-wrap .ant-input {
+  font-family: inherit;
+}
+
+.pdp-hidden-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@keyframes pdp-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pdp-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pdp-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdp-overlay,
+  .pdp-panel,
+  .pdp-sheet,
+  .pdp-grid,
+  .pdp-month-grid,
+  .pdp-year-grid {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.pdp-calendar-embed {
+  width: 100%;
+  max-width: 400px;
+  background: var(--pdp-bg-elevated);
+  border: 1px solid var(--pdp-border);
+  border-radius: var(--pdp-radius);
+  overflow: hidden;
+}
+
+/* Official theme (formerly "golsetan" storefront appearance).
+   Usage: appearance="official" ("golsetan" still works as an alias). */
+.pdp-root.pdp--golsetan {
+  --pdp-primary: #1d7d5e;
+  --pdp-primary-hover: #17654c;
+  --pdp-primary-active: #0f4a38;
+  --pdp-primary-soft: rgba(29, 125, 94, 0.12);
+  --pdp-primary-softer: rgba(29, 125, 94, 0.06);
+  --pdp-radius: 12px;
+  --pdp-radius-sm: 8px;
+  --pdp-font: "Vazirmatn", Tahoma, system-ui, sans-serif;
+}
+
+.pdp--golsetan .pdp-panel {
+  width: 340px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgb(32 32 33 / 0.12);
+}
+
+.pdp--golsetan .pdp-panel--popover {
+  width: 340px;
+}
+
+.pdp--golsetan .pdp-panel--wide {
+  width: min(480px, calc(100vw - 32px));
+}
+
+.pdp--golsetan .pdp-panel--xwide {
+  width: min(640px, calc(100vw - 32px));
+}
+
+.pdp--golsetan .pdp-header {
+  background: transparent;
+  color: var(--pdp-text);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 4px;
+}
+
+.pdp--golsetan .pdp-cal-toggle {
+  background: var(--pdp-bg-muted);
+}
+
+.pdp--golsetan .pdp-cal-toggle-btn {
+  color: var(--pdp-text-secondary);
+}
+
+.pdp--golsetan .pdp-cal-toggle-btn--active {
+  background: var(--pdp-primary);
+  color: #fff;
+}
+
+.pdp--golsetan .pdp-header-title {
+  font-size: 20px;
+}
+
+/* Golsetan footer: full-bleed bar; confirm and cancel stick to the card
+   walls (confirm at inline-end, cancel at inline-start, still gray). */
+.pdp--golsetan .pdp-panel > .pdp-footer {
+  margin: 12px -12px -12px;
+  padding: 12px 0 12px;
+  border-top: 1px solid var(--pdp-border);
+  gap: 4px;
+}
+
+.pdp--golsetan .pdp-footer-left,
+.pdp--golsetan .pdp-footer-right {
+  gap: 4px;
+}
+
+.pdp--golsetan .pdp-btn {
+  white-space: nowrap;
+  padding: 0 12px;
+  font-size: 14px;
+  min-height: 46px;
+}
+
+.pdp--golsetan .pdp-btn--primary {
+  padding: 0 22px;
+  box-shadow: none;
+}
+
+.pdp--golsetan .pdp-btn--cancel {
+  background: var(--pdp-bg-muted);
+  color: var(--pdp-text-secondary);
+}
+
+.pdp--golsetan .pdp-btn--cancel:hover {
+  background: var(--pdp-bg-muted);
+  color: var(--pdp-text);
+}
+
+.pdp-root.pdp--golsetan[dir="rtl"] .pdp-panel > .pdp-footer .pdp-btn--primary {
+  border-radius: 0 14px 14px 0;
+}
+
+.pdp-root.pdp--golsetan[dir="rtl"] .pdp-panel > .pdp-footer .pdp-btn--cancel {
+  border-radius: 14px 0 0 14px;
+}
+
+.pdp-root.pdp--golsetan[dir="ltr"] .pdp-panel > .pdp-footer .pdp-btn--primary {
+  border-radius: 14px 0 0 14px;
+}
+
+.pdp-root.pdp--golsetan[dir="ltr"] .pdp-panel > .pdp-footer .pdp-btn--cancel {
+  border-radius: 0 14px 14px 0;
+}
+
+.pdp--golsetan .pdp-g-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  border-radius: 8px;
+  background: #f7f7f7;
+  padding: 0 8px;
+  font-size: 14px;
+  color: #202021;
+}
+
+.pdp--golsetan .pdp-g-head-label {
+  font-weight: 500;
+}
+
+.pdp--golsetan .pdp-g-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdp--golsetan .pdp-g-title-btn {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: color 0.15s ease;
+}
+
+.pdp--golsetan .pdp-g-title-btn:hover {
+  color: var(--pdp-primary);
+}
+
+.pdp--golsetan .pdp-g-nav {
+  border: 0;
+  background: transparent;
+  color: #686868;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pdp--golsetan .pdp-g-nav:hover:not(:disabled) {
+  background: rgba(32, 32, 33, 0.06);
+}
+
+.pdp--golsetan .pdp-g-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pdp--golsetan .pdp-weekdays {
+  display: none;
+}
+
+.pdp--golsetan .pdp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.pdp--golsetan .pdp-day {
+  height: auto;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  flex-direction: column;
+  padding: 6px 2px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.pdp--golsetan .pdp-g-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pdp--golsetan .pdp-g-day .pdp-holiday-dot {
+  bottom: 0;
+}
+
+.pdp--golsetan .pdp-day-inner {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pdp--golsetan .pdp-g-num {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.pdp--golsetan .pdp-g-sub {
+  font-size: 9px;
+  line-height: 1.4;
+  color: #686868;
+}
+
+.pdp--golsetan .pdp-day:hover {
+  border-color: #d3d3d3;
+}
+
+.pdp--golsetan .pdp-day:hover .pdp-day-inner {
+  background: transparent;
+}
+
+.pdp--golsetan .pdp-day--selected {
+  border-color: var(--pdp-primary);
+  color: var(--pdp-primary);
+}
+
+.pdp--golsetan .pdp-day--holiday:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end):not(
+    .pdp-day--range-middle
+  ):not(.pdp-day--disabled) {
+  background: rgba(200, 67, 47, 0.1);
+  border-color: rgba(200, 67, 47, 0.35);
+  color: #c8432f;
+}
+
+.pdp--golsetan .pdp-day--holiday:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end) .pdp-g-sub {
+  color: rgba(200, 67, 47, 0.75);
+}
+
+.pdp--golsetan .pdp-day--selected .pdp-day-inner {
+  background: transparent;
+  color: var(--pdp-primary);
+  box-shadow: none;
+  font-weight: 500;
+}
+
+.pdp--golsetan .pdp-day--today:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end) .pdp-day-inner {
+  color: #c8432f;
+  box-shadow: none;
+}
+
+.pdp--golsetan .pdp-day--disabled {
+  opacity: 1;
+  color: #afafb0;
+  cursor: not-allowed;
+}
+
+.pdp--golsetan .pdp-day--disabled .pdp-g-sub {
+  color: #afafb0;
+}
+
+.pdp--golsetan .pdp-day--weekend:not(.pdp-day--selected):not(.pdp-day--range-start):not(.pdp-day--range-end) .pdp-day-inner {
+  color: inherit;
+}
+
+/* Range highlight. This theme renders its own day content (no .pdp-day-inner),
+   and `.pdp--golsetan .pdp-day { background: transparent }` outranks the base
+   range rules, so the selected range is drawn on the cell itself. */
+/* Simple selection: drop the base theme's pill-rounded range ends and keep the
+   same rounded-rectangle shape used for every other day. */
+.pdp-root.pdp--golsetan .pdp-day--range-start,
+.pdp-root.pdp--golsetan .pdp-day--range-end {
+  border-radius: 8px;
+}
+
+.pdp--golsetan .pdp-day--range-start,
+.pdp--golsetan .pdp-day--range-end {
+  background: var(--pdp-primary);
+  border-color: var(--pdp-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.pdp--golsetan .pdp-day--range-middle {
+  background: var(--pdp-primary-soft);
+  color: var(--pdp-primary);
+}
+
+.pdp--golsetan .pdp-day--hover-range {
+  background: var(--pdp-primary-softer);
+}
+
+.pdp--golsetan .pdp-day--range-start .pdp-g-sub,
+.pdp--golsetan .pdp-day--range-end .pdp-g-sub {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pdp--golsetan .pdp-day--range-middle .pdp-g-sub {
+  color: var(--pdp-primary);
+  opacity: 0.7;
+}
+
+.pdp--golsetan .pdp-day--range-start:hover,
+.pdp--golsetan .pdp-day--range-end:hover {
+  border-color: var(--pdp-primary);
+  background: var(--pdp-primary-hover);
+}
+
+.pdp--golsetan .pdp-day--range-middle:hover {
+  background: var(--pdp-primary-soft);
+}
+
+/* A little breathing room between the grid and the start/end caption. */
+.pdp--golsetan .pdp-range-caption {
+  margin-top: 10px;
+}
+
+/* Multi-month: the per-day weekday sub-label is too wide for a narrow column
+   (it sets a min-content width the grid can't shrink below), so show a short
+   weekday header row per month and drop the sub-labels. */
+.pdp--golsetan .pdp-month-cols--multi {
+  gap: 14px;
+}
+
+.pdp--golsetan .pdp-month-cols--multi .pdp-weekdays {
+  display: grid;
+  margin: 0 0 4px;
+  padding: 0 0 2px;
+  background: transparent;
+  border-radius: 0;
+}
+
+.pdp--golsetan .pdp-month-cols--multi .pdp-weekday {
+  height: 24px;
+  font-size: 11px;
+  color: #686868;
+}
+
+.pdp--golsetan .pdp-month-cols--multi .pdp-g-sub {
+  display: none;
+}
+
+.pdp--golsetan .pdp-month-cols--multi .pdp-g-num {
+  font-size: 13px;
+}
+
+/* Let the day cells shrink below their text min-content so the 7-column grid
+   always fits the narrow month column (no horizontal overflow/overlap). */
+.pdp--golsetan .pdp-month-cols--multi .pdp-day {
+  min-width: 0;
+  overflow: hidden;
+  padding: 5px 0;
+}
+
+.pdp--golsetan .pdp-month-cols--multi .pdp-grid {
+  margin-top: 0;
+  gap: 4px;
+}
+
+.pdp--golsetan .pdp-day--selected .pdp-g-day .pdp-holiday-dot,
+.pdp--golsetan .pdp-day--range-start .pdp-g-day .pdp-holiday-dot,
+.pdp--golsetan .pdp-day--range-end .pdp-g-day .pdp-holiday-dot {
+  background: #fff;
+}
+
+.pdp--golsetan .pdp-day--outside {
+  opacity: 0.38;
+}
+
+.pdp-input-wrap.pdp--golsetan .ant-input-affix-wrapper {
+  min-height: 44px;
+  border-radius: 8px;
+  background: #fff;
+  border-color: transparent;
+  box-shadow: none;
+  font-size: 14px;
+  padding: 0 16px;
+}
+
+.pdp-input-wrap.pdp--golsetan .ant-input-affix-wrapper:hover,
+.pdp-input-wrap.pdp--golsetan .ant-input-affix-wrapper:focus-within {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--pdp-primary-glow, rgba(29, 125, 94, 0.35));
+}
+
+.pdp-input-wrap.pdp--golsetan .ant-input-affix-wrapper input {
+  color: #202021;
+  font-size: 14px;
+  background: transparent;
+}
+
+.pdp-input-wrap.pdp--golsetan .ant-input-affix-wrapper input::placeholder {
+  color: #686868;
+}
+
+.pdp-input-wrap.pdp--golsetan .pdp-g-pre {
+  display: inline-flex;
+  color: #202021;
+}
+
+.pdp-input-wrap.pdp--golsetan .pdp-g-suf {
+  display: inline-flex;
+  color: #686868;
+}
+
+.pdp-sheet-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}

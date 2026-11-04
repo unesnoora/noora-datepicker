@@ -1,0 +1,58 @@
+{
+  "name": "noora-datepicker",
+  "version": "1.0.0",
+  "description": "Noora DatePicker (تقویم نورا) — Persian (Jalali) + Gregorian date & time picker for React + TypeScript + Ant Design",
+  "author": "Unes Jafari",
+  "license": "MIT",
+  "homepage": "https://unesnoora.github.io/noora-datepicker/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unesnoora/noora-datepicker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unesnoora/noora-datepicker/issues"
+  },
+  "keywords": ["react", "datepicker", "jalali", "persian", "shamsi", "gregorian", "antd", "rtl", "calendar", "noora"],
+  "type": "module",
+  "main": "./dist/noora-datepicker.js",
+  "module": "./dist/noora-datepicker.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/styles.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/noora-datepicker.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "dev": "vite --port 5175",
+    "build": "vite build --mode lib && tsc -p tsconfig.build.json",
+    "build:demo": "vite build",
+    "preview": "vite preview --outDir demo-dist",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "antd": ">=5",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "@types/node": "22.19.17",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.1",
+    "antd": "^6.6.5",
+    "clsx": "2.1.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwind-merge": "3.4.0",
+    "tailwindcss": "4.1.17",
+    "typescript": "5.9.3",
+    "vite": "7.3.2",
+    "vite-plugin-singlefile": "2.3.0"
+  }
+}

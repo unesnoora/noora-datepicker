@@ -1,0 +1,48 @@
+:root {
+  --pdp-z: 1100;
+  --pdp-overlay: rgba(15, 23, 42, 0.45);
+  --pdp-font: "Vazirmatn", Tahoma, system-ui, sans-serif;
+}
+
+.pdp-root {
+  --pdp-primary: #1677ff;
+  --pdp-primary-hover: #4096ff;
+  --pdp-primary-active: #0958d9;
+  --pdp-primary-soft: rgba(22, 119, 255, 0.12);
+  --pdp-primary-softer: rgba(22, 119, 255, 0.06);
+  --pdp-danger: #ff4d4f;
+  --pdp-bg: #ffffff;
+  --pdp-bg-elevated: #ffffff;
+  --pdp-bg-muted: #f6f8fb;
+  --pdp-bg-hover: #f0f5ff;
+  --pdp-text: rgba(0, 0, 0, 0.88);
+  --pdp-text-secondary: rgba(0, 0, 0, 0.45);
+  --pdp-text-disabled: rgba(0, 0, 0, 0.25);
+  --pdp-border: #eef1f6;
+  --pdp-header-bg: var(--pdp-primary);
+  --pdp-header-text: #ffffff;
+  --pdp-radius: 16px;
+  --pdp-radius-sm: 10px;
+  --pdp-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+  --pdp-font: "Vazirmatn", Tahoma, system-ui, sans-serif;
+  --pdp-day-size: 40px;
+  --pdp-z: 1100;
+  --pdp-overlay: rgba(15, 23, 42, 0.45);
+  font-family: var(--pdp-font);
+  color: var(--pdp-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.pdp-root.pdp--dark {
+  --pdp-bg: #141414;
+  --pdp-bg-elevated: #1f1f1f;
+  --pdp-bg-muted: #262626;
+  --pdp-bg-hover: rgba(22, 119, 255, 0.16);
+  --pdp-text: rgba(255, 255, 255, 0.88);
+  --pdp-text-secondary: rgba(255, 255, 255, 0.45);
+  --pdp-text-disabled: rgba(255, 255, 255, 0.25);
+  --pdp-border: #303030;
+  --pdp-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  --pdp-overlay: rgba(0, 0, 0, 0.62);
+  --pdp-primary-soft: rgba(22, 119, 255, 0.22);
+}
