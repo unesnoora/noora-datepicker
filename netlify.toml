@@ -1,0 +1,10 @@
+# Build and publish the documentation/demo site (not the npm library bundle).
+[build]
+  command = "npm run build:demo"
+  publish = "demo-dist"
+
+# Single-page app fallback so deep links don't return 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
