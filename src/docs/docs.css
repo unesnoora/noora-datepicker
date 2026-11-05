@@ -191,6 +191,22 @@
   color: #1677ff;
 }
 
+.docs-github {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #dfe2e5;
+  white-space: nowrap;
+}
+
+.docs-github:hover {
+  color: #1677ff;
+  border-color: #1677ff;
+}
+
 .docs-menu-btn {
   display: none;
 }
@@ -251,10 +267,14 @@
   padding: 28px 40px 72px;
 }
 
+.docs-main:has(> .docs-home) {
+  padding: 12px 24px 24px;
+}
+
 .docs-home {
   --docs-brand: #1d7d5e;
   --docs-brand-hover: #17654c;
-  padding: 28px 24px 64px;
+  padding: 0 0 8px;
 }
 
 .docs-calendars {
@@ -262,14 +282,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 20px;
-  margin: 8px auto 0;
+  gap: 12px;
+  margin: 0 auto;
   max-width: 1180px;
 }
 
 .docs-calendars .pdp-input-wrap {
   width: max-content;
-  zoom: 0.78;
+  zoom: 0.72;
 }
 
 .docs-calendars .pdp-calendar-embed {
@@ -288,7 +308,7 @@
 
 .docs-hero {
   text-align: center;
-  padding: 36px 16px 8px;
+  padding: 24px 16px 4px;
 }
 
 .docs-hero h1 {
@@ -324,10 +344,10 @@
 .docs-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 20px;
   max-width: 980px;
-  margin: 48px auto 0;
-  padding-top: 28px;
+  margin: 28px auto 0;
+  padding-top: 20px;
   border-top: 1px solid #eaecef;
   text-align: center;
 }

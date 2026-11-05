@@ -197,7 +197,7 @@
   align-items: stretch;
   gap: 8px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   flex: 1;
   min-width: 0;
 }
@@ -205,19 +205,24 @@
 .pdp-nav-pill {
   flex: 1;
   min-width: 0;
-  min-height: 46px;
+  min-height: 50px;
   border: 1.5px solid var(--pdp-border);
   background: var(--pdp-bg-elevated);
   color: inherit;
   font: inherit;
+  font-size: 15px;
+  line-height: 1.35;
   cursor: pointer;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 15px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   transition: border-color 0.15s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pdp-nav-pill:hover {
@@ -467,6 +472,16 @@
   gap: 8px;
   padding: 12px 16px 16px;
   animation: pdp-fade-in 0.18s ease;
+}
+
+.pdp-month-grid .pdp-chip {
+  height: auto;
+  min-height: 50px;
+  padding: 10px 8px;
+  font-size: 15px;
+  line-height: 1.35;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .pdp-chip {
@@ -1024,11 +1039,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 36px;
+  gap: 6px;
+  min-height: 44px;
+  height: auto;
   border-radius: 8px;
   background: #f7f7f7;
-  padding: 0 8px;
-  font-size: 14px;
+  padding: 6px 8px;
+  font-size: 15px;
   color: #202021;
 }
 
@@ -1039,7 +1056,10 @@
 .pdp--golsetan .pdp-g-title {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
 }
 
 .pdp--golsetan .pdp-g-title-btn {
@@ -1047,11 +1067,17 @@
   background: transparent;
   font: inherit;
   font-weight: 500;
+  font-size: 15px;
+  line-height: 1.35;
   color: inherit;
   cursor: pointer;
-  padding: 2px 4px;
+  padding: 4px 6px;
   border-radius: 6px;
   transition: color 0.15s ease;
+  max-width: 48%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pdp--golsetan .pdp-g-title-btn:hover {

@@ -1,6 +1,6 @@
 # noora-datepicker — تقویم نورا Noora DatePicker
 
-**Live docs (Persian):** [unesnoora.github.io/noora-datepicker](https://unesnoora.github.io/noora-datepicker/)
+**Live docs (Persian):** [unesnoora.github.io/noora-datepicker](https://unesnoora.github.io/noora-datepicker/) · **GitHub:** [unesnoora/noora-datepicker](https://github.com/unesnoora/noora-datepicker)
 
 ![React 18+](https://img.shields.io/badge/React-18%2B-61dafb?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-ready-3178c6?logo=typescript&logoColor=white)
@@ -12,37 +12,7 @@ Persian (Jalali) + Gregorian date & time picker for **React + TypeScript + Ant D
 Accurate Jalali engine (leap years, month lengths), RTL-native, mobile bottom
 sheet with day/month/year wheels, desktop modal/popover, dark + official themes.
 
-> داکیومنت فارسی آنلاین روی GitHub Pages (لینک بالا). برای توسعه محلی: `npm run dev`.
-
-## Publish & demo hosting (GitHub Pages)
-
-### یک‌بار در GitHub (اگر 404 یا deploy قرمز است)
-
-1. [Settings → Pages](https://github.com/unesnoora/noora-datepicker/settings/pages)  
-   **Source:** **GitHub Actions** (همان چیزی که الان انتخاب کردی — دکمه‌های Jekyll / Static HTML را **نزن**)
-2. [Settings → Actions → General](https://github.com/unesnoora/noora-datepicker/settings/actions)  
-   **Workflow permissions:** **Read and write permissions** → Save  
-   (بدون این، jobهای deploy اغلب با خطای permission قرمز می‌شوند.)
-3. **Actions** → در چپ **Deploy docs** → **Run workflow** → Run  
-   (یا بعد از هر push خودکار اجرا می‌شود.)
-4. اگر job **deploy** زرد ماند: **Settings → Environments → github-pages** → تأیید/Approve
-5. بعد از ✅ سبز، ۱–۲ دقیقه صبر کن →  
-   **https://unesnoora.github.io/noora-datepicker/**  
-   (بعدش در همان صفحه Pages، «Workflow details» و آخرین deploy سبز دیده می‌شود.)
-
-Workflow فایل `.github/workflows/deploy-docs.yml` است: `npm ci` → `npm run build:demo` → آپلود `demo-dist`.
-
-### npm
-
-```bash
-npm login
-npm publish
-```
-
-### Vercel / Netlify (اختیاری)
-
-- **Vercel:** import ریپو؛ `vercel.json` آماده است.
-- **Netlify:** `netlify.toml` — build `npm run build:demo`, publish `demo-dist`.
+> داکیومنت فارسی آنلاین (لینک بالا). برای توسعه محلی: `npm run dev`.
 
 ## Features
 

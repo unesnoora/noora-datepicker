@@ -7,7 +7,7 @@ import { ConfigPage } from "./ConfigPage";
 import { ExampleRoute } from "./ExamplePages";
 import { GuidePage } from "./GuidePages";
 import { HomePage } from "./HomePage";
-import { PRODUCT_NAME_EN, PRODUCT_NAME_FA, PRODUCT_TITLE } from "./brand";
+import { PRODUCT_NAME_EN, PRODUCT_NAME_FA, PRODUCT_TITLE, REPO_URL } from "./brand";
 import { DocsThemeProvider, ThemeSelector } from "./docsTheme";
 import "./docs.css";
 
@@ -128,6 +128,14 @@ export default function DocsApp() {
             </a>
             <a className={path.startsWith("/examples") ? "is-active" : ""} href="#/examples/formatting">
               نمونه‌ها
+            </a>
+            <a
+              className="docs-github"
+              href={REPO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
             </a>
           </nav>
           {!isHome ? <ThemeSelector /> : null}
