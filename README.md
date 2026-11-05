@@ -18,11 +18,17 @@ sheet with day/month/year wheels, desktop modal/popover, dark + official themes.
 
 ### یک‌بار در GitHub (اگر 404 یا deploy قرمز است)
 
-1. [Settings → Pages](https://github.com/unesnoora/noora-datepicker/settings/pages)
-2. **Build and deployment → Source:** **GitHub Actions** (نه Branch)
-3. **Actions → Deploy docs → Run workflow**
-4. بعد از ✅ سبز، ۱–۲ دقیقه صبر کن →  
-   **https://unesnoora.github.io/noora-datepicker/**
+1. [Settings → Pages](https://github.com/unesnoora/noora-datepicker/settings/pages)  
+   **Source:** **GitHub Actions** (همان چیزی که الان انتخاب کردی — دکمه‌های Jekyll / Static HTML را **نزن**)
+2. [Settings → Actions → General](https://github.com/unesnoora/noora-datepicker/settings/actions)  
+   **Workflow permissions:** **Read and write permissions** → Save  
+   (بدون این، jobهای deploy اغلب با خطای permission قرمز می‌شوند.)
+3. **Actions** → در چپ **Deploy docs** → **Run workflow** → Run  
+   (یا بعد از هر push خودکار اجرا می‌شود.)
+4. اگر job **deploy** زرد ماند: **Settings → Environments → github-pages** → تأیید/Approve
+5. بعد از ✅ سبز، ۱–۲ دقیقه صبر کن →  
+   **https://unesnoora.github.io/noora-datepicker/**  
+   (بعدش در همان صفحه Pages، «Workflow details» و آخرین deploy سبز دیده می‌شود.)
 
 Workflow فایل `.github/workflows/deploy-docs.yml` است: `npm ci` → `npm run build:demo` → آپلود `demo-dist`.
 
