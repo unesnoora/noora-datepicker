@@ -1,6 +1,6 @@
 # noora-datepicker — تقویم نورا Noora DatePicker
 
-**Live docs (Persian):** [noora-datepicker.vercel.app](https://noora-datepicker.vercel.app/) (Vercel — after import) · [GitHub Pages](https://unesnoora.github.io/noora-datepicker/) (needs Pages → GitHub Actions)
+**Live docs (Persian):** [unesnoora.github.io/noora-datepicker](https://unesnoora.github.io/noora-datepicker/)
 
 ![React 18+](https://img.shields.io/badge/React-18%2B-61dafb?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-ready-3178c6?logo=typescript&logoColor=white)
@@ -14,29 +14,17 @@ sheet with day/month/year wheels, desktop modal/popover, dark + official themes.
 
 > داکیومنت فارسی آنلاین روی GitHub Pages (لینک بالا). برای توسعه محلی: `npm run dev`.
 
-## Publish & demo hosting
+## Publish & demo hosting (GitHub Pages)
 
-### Vercel (recommended — free)
+### یک‌بار در GitHub (اگر 404 یا deploy قرمز است)
 
-1. [vercel.com](https://vercel.com) → **Add New… → Project**
-2. Import **`unesnoora/noora-datepicker`** from GitHub
-3. Leave defaults (`vercel.json` sets build + `demo-dist`) → **Deploy**
-4. Production URL is usually **`https://noora-datepicker.vercel.app`** — put it in `homepage` in `package.json` if different.
+1. [Settings → Pages](https://github.com/unesnoora/noora-datepicker/settings/pages)
+2. **Build and deployment → Source:** **GitHub Actions** (نه Branch)
+3. **Actions → Deploy docs → Run workflow**
+4. بعد از ✅ سبز، ۱–۲ دقیقه صبر کن →  
+   **https://unesnoora.github.io/noora-datepicker/**
 
-CLI (after `npx vercel login` in your terminal):
-
-```bash
-npx vercel --prod
-```
-
-### GitHub Pages (404 fix)
-
-If `https://unesnoora.github.io/noora-datepicker/` is **404**:
-
-1. Repo **Settings → Pages → Build and deployment**
-2. **Source:** **GitHub Actions** (not “Deploy from a branch”)
-3. **Actions → Deploy docs → Run workflow** (or push again)
-4. Wait 1–2 minutes after a green run
+Workflow فایل `.github/workflows/deploy-docs.yml` است: `npm ci` → `npm run build:demo` → آپلود `demo-dist`.
 
 ### npm
 
@@ -44,6 +32,11 @@ If `https://unesnoora.github.io/noora-datepicker/` is **404**:
 npm login
 npm publish
 ```
+
+### Vercel / Netlify (اختیاری)
+
+- **Vercel:** import ریپو؛ `vercel.json` آماده است.
+- **Netlify:** `netlify.toml` — build `npm run build:demo`, publish `demo-dist`.
 
 ## Features
 
