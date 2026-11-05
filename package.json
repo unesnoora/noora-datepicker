@@ -4,7 +4,7 @@
   "description": "Noora DatePicker (تقویم نورا) — Persian (Jalali) + Gregorian date & time picker for React + TypeScript + Ant Design",
   "author": "Unes Jafari",
   "license": "MIT",
-  "homepage": "https://unesnoora.github.io/noora-datepicker/",
+  "homepage": "https://noora-datepicker.vercel.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/unesnoora/noora-datepicker.git"

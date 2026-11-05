@@ -1,6 +1,6 @@
 # noora-datepicker — تقویم نورا Noora DatePicker
 
-**Live docs (Persian):** [unesnoora.github.io/noora-datepicker](https://unesnoora.github.io/noora-datepicker/)
+**Live docs (Persian):** [noora-datepicker.vercel.app](https://noora-datepicker.vercel.app/) (Vercel — after import) · [GitHub Pages](https://unesnoora.github.io/noora-datepicker/) (needs Pages → GitHub Actions)
 
 ![React 18+](https://img.shields.io/badge/React-18%2B-61dafb?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-ready-3178c6?logo=typescript&logoColor=white)
@@ -16,17 +16,34 @@ sheet with day/month/year wheels, desktop modal/popover, dark + official themes.
 
 ## Publish & demo hosting
 
-This folder is meant as its **own GitHub repo** (`unesnoora/noora-datepicker`), not inside the golsetan monorepo.
+### Vercel (recommended — free)
 
-1. Create an empty repo on GitHub named **`noora-datepicker`**.
-2. From this directory: `git init`, commit, `git remote add origin …`, push `main`.
-3. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-4. Push again (or run **Actions → Deploy docs**). Site URL:  
-   `https://unesnoora.github.io/noora-datepicker/`  
-   (matches `homepage` in `package.json` for npm.)
-5. Publish: `npm login` then `npm publish`.
+1. [vercel.com](https://vercel.com) → **Add New… → Project**
+2. Import **`unesnoora/noora-datepicker`** from GitHub
+3. Leave defaults (`vercel.json` sets build + `demo-dist`) → **Deploy**
+4. Production URL is usually **`https://noora-datepicker.vercel.app`** — put it in `homepage` in `package.json` if different.
 
-**Cloudflare Pages (also free):** connect the same repo, build command `npm run build:demo`, output directory `demo-dist`.
+CLI (after `npx vercel login` in your terminal):
+
+```bash
+npx vercel --prod
+```
+
+### GitHub Pages (404 fix)
+
+If `https://unesnoora.github.io/noora-datepicker/` is **404**:
+
+1. Repo **Settings → Pages → Build and deployment**
+2. **Source:** **GitHub Actions** (not “Deploy from a branch”)
+3. **Actions → Deploy docs → Run workflow** (or push again)
+4. Wait 1–2 minutes after a green run
+
+### npm
+
+```bash
+npm login
+npm publish
+```
 
 ## Features
 
